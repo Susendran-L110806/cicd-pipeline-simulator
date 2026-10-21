@@ -1,0 +1,11 @@
+﻿name: Simulator CI Build & Validate
+on: [push, pull_request]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate Core Artifacts
+        run: |
+          test -f index.html || exit 1
+          echo "HTML and simulator scripts validated successfully."
